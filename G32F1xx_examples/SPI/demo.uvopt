@@ -170,22 +170,6 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>35</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1750</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\myapp\src\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\demo\myapp/src/main.c\35</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
           <LineNumber>500</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>1510</Address>
@@ -563,7 +547,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\G32F1xx_library\Drivers\source\gt_spi.c</PathWithFileName>

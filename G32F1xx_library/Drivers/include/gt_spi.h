@@ -131,9 +131,10 @@ typedef struct {                                    /*!< SPI Structure          
   __O  union SPI_ICR_REG  ICR;                               /*!< SPI Interrupt Clear Register                                          */
 } G32F1_SPI_TypeDef;
 
-#define SPI1                             ((G32F1_SPI_TypeDef                *) GT_SPI1_BASE)
-#define SPI2                             ((G32F1_SPI_TypeDef                *) GT_SPI2_BASE)
-#define SPI3                             ((G32F1_SPI_TypeDef                *) GT_SPI3_BASE)
+//#define SPI1                             ((G32F1_SPI_TypeDef                *) GT_SPI1_BASE)
+//#define SPI2                             ((G32F1_SPI_TypeDef                *) GT_SPI2_BASE)
+//#define SPI3                             ((G32F1_SPI_TypeDef                *) GT_SPI3_BASE)
+
 
 #define SPI_FRAME	0
 #define SSI_FRAME	1
@@ -192,10 +193,144 @@ void POLL_RXFIFO_NOTEMPTY(G32F1_SPI_TypeDef *SPI);
 #define	SPI2_MISO_PB14 (GT_AFIO->PB14 = 0x5)
 #define	SPI2_MOSI_PB15 (GT_AFIO->PB15 = 0x5)	
 
-#define	SPI3_SSEL_PA15 (GT_AFIO->JTDI_PA15  = 0x1)
-#define	SPI3_SCK_PB3	 (GT_AFIO->JTDO_PB3   = 0x1)	
-#define	SPI3_MISO_PB4	 (GT_AFIO->JNRST_PB4  = 0x1)
-#define	SPI3_MOSI_PB5	 (GT_AFIO->PB5        = 0x1)	
+//#define	SPI3_SSEL_PA15 (GT_AFIO->JTDI_PA15  = 0x1)
+//#define	SPI3_SCK_PB3	 (GT_AFIO->JTDO_PB3   = 0x1)	
+//#define	SPI3_MISO_PB4	 (GT_AFIO->JNRST_PB4  = 0x1)
+//#define	SPI3_MOSI_PB5	 (GT_AFIO->PB5        = 0x1)	
+
+
+
+////////////////////////////////ST///////////////////////////////////////////
+
+#define SPI1                             ((SPI_TypeDef                *) GT_SPI1_BASE)
+#define SPI2                             ((SPI_TypeDef                *) GT_SPI2_BASE)
+#define SPI3                             ((SPI_TypeDef                *) GT_SPI3_BASE)
+
+#define SPI_Mode_Master                 ((uint16_t)0x0104)
+#define SPI_Mode_Slave                  ((uint16_t)0x0000)
+
+
+#define SPI_Direction_2Lines_FullDuplex ((uint16_t)0x0000)
+#define SPI_Direction_2Lines_RxOnly     ((uint16_t)0x0400)
+#define SPI_Direction_1Line_Rx          ((uint16_t)0x8000)
+#define SPI_Direction_1Line_Tx          ((uint16_t)0xC000)
+
+#define SPI_NSS_Soft                    ((uint16_t)0x0200)
+#define SPI_NSS_Hard                    ((uint16_t)0x0000)
+
+#define SPI_FirstBit_MSB                ((uint16_t)0x0000)
+#define SPI_FirstBit_LSB                ((uint16_t)0x0080)
+
+#define SPI_DataSize_4b                 ((uint16_t)0x3)
+#define SPI_DataSize_5b                 ((uint16_t)0x4)
+#define SPI_DataSize_6b                 ((uint16_t)0x5)
+#define SPI_DataSize_7b                 ((uint16_t)0x6)
+#define SPI_DataSize_8b                 ((uint16_t)0x7)
+#define SPI_DataSize_9b                 ((uint16_t)0x8)
+#define SPI_DataSize_10b                ((uint16_t)0x9)
+#define SPI_DataSize_11b                ((uint16_t)0xA)
+#define SPI_DataSize_12b                ((uint16_t)0xB)
+#define SPI_DataSize_13b                ((uint16_t)0xC)
+#define SPI_DataSize_14b                ((uint16_t)0xD)
+#define SPI_DataSize_15b                ((uint16_t)0xE)
+#define SPI_DataSize_16b                ((uint16_t)0xF)
+
+
+#define SPI_CPOL_Low                    0
+#define SPI_CPOL_High                   1
+
+#define SPI_CPHA_1Edge                  0
+#define SPI_CPHA_2Edge                  1
+
+#define SPI_BaudRatePrescaler_2         4
+#define SPI_BaudRatePrescaler_4         8
+#define SPI_BaudRatePrescaler_8         16
+#define SPI_BaudRatePrescaler_16        32
+#define SPI_BaudRatePrescaler_32        64
+#define SPI_BaudRatePrescaler_64        128
+#define SPI_BaudRatePrescaler_128       256
+#define SPI_BaudRatePrescaler_256       512
+
+
+//#define SPI_I2S_FLAG_RXNE               ((uint16_t)0x0001)
+//#define SPI_I2S_FLAG_TXE                ((uint16_t)0x0002)
+//#define I2S_FLAG_CHSIDE                 ((uint16_t)0x0004)
+//#define I2S_FLAG_UDR                    ((uint16_t)0x0008)
+//#define SPI_FLAG_CRCERR                 ((uint16_t)0x0010)
+//#define SPI_FLAG_MODF                   ((uint16_t)0x0020)
+//#define SPI_I2S_FLAG_OVR                ((uint16_t)0x0040)
+//#define SPI_I2S_FLAG_BSY                ((uint16_t)0x0080)
+
+#define SPI_I2S_FLAG_TFE                ((uint16_t)0x0001)
+#define SPI_I2S_FLAG_TNF                ((uint16_t)0x0002)
+#define SPI_I2S_FLAG_RNE                ((uint16_t)0x0004)
+#define SPI_I2S_FLAG_RFF                ((uint16_t)0x0008)
+#define SPI_I2S_FLAG_BSY                ((uint16_t)0x0010)
+
+
+typedef struct
+{
+	
+	__IO union SPI_CR0_REG  CR0;                               /*!< SPI control register0                                                 */
+  __IO union SPI_CR1_REG  CR1;                               /*!< SPI control register1                                                 */
+  __IO union SPI_DR_REG  DR;                                /*!< SPI data register                                                     */
+  __I  union SPI_SR_REG  SR;                                /*!< SPI status register                                                   */
+  __IO union SPI_CPSR_REG  CPSR;                              /*!< SPI Clock Prescale Register                                           */
+  __IO union SPI_IMSC_REG  IMSC;                              /*!< Interrupt Mask Set and Clear Register                                 */
+  __I  union SPI_RIS_REG  RIS;                               /*!< Raw Interrupt Status Register                                         */
+  __I  union SPI_MIS_REG  MIS;                               /*!< Masked Interrupt Status Register                                      */
+  __O  union SPI_ICR_REG  ICR;                               /*!< SPI Interrupt Clear Register                                          */
+
+} SPI_TypeDef;
+
+/** 
+  * @brief  SPI Init structure definition  
+  */
+
+typedef struct
+{
+  uint16_t SPI_Direction;           /*!< Specifies the SPI unidirectional or bidirectional data mode.
+                                         This parameter can be a value of @ref SPI_data_direction */
+
+  uint16_t SPI_Mode;                /*!< Specifies the SPI operating mode.
+                                         This parameter can be a value of @ref SPI_mode */
+
+  uint16_t SPI_DataSize;            /*!< Specifies the SPI data size.
+                                         This parameter can be a value of @ref SPI_data_size */
+
+  uint16_t SPI_CPOL;                /*!< Specifies the serial clock steady state.
+                                         This parameter can be a value of @ref SPI_Clock_Polarity */
+
+  uint16_t SPI_CPHA;                /*!< Specifies the clock active edge for the bit capture.
+                                         This parameter can be a value of @ref SPI_Clock_Phase */
+
+  uint16_t SPI_NSS;                 /*!< Specifies whether the NSS signal is managed by
+                                         hardware (NSS pin) or by software using the SSI bit.
+                                         This parameter can be a value of @ref SPI_Slave_Select_management */
+ 
+  uint16_t SPI_BaudRatePrescaler;   /*!< Specifies the Baud Rate prescaler value which will be
+                                         used to configure the transmit and receive SCK clock.
+                                         This parameter can be a value of @ref SPI_BaudRate_Prescaler.
+                                         @note The communication clock is derived from the master
+                                               clock. The slave clock does not need to be set. */
+
+  uint16_t SPI_FirstBit;            /*!< Specifies whether data transfers start from MSB or LSB bit.
+                                         This parameter can be a value of @ref SPI_MSB_LSB_transmission */
+
+  uint16_t SPI_CRCPolynomial;       /*!< Specifies the polynomial used for the CRC calculation. */
+}SPI_InitTypeDef;
+
+void SPI_StructInit(SPI_InitTypeDef* SPI_InitStruct);
+void SPI_Cmd(SPI_TypeDef* SPIx, FunctionalState NewState);
+void SPI_Init(SPI_TypeDef* SPIx, SPI_InitTypeDef* SPI_InitStruct);
+void SPI_I2S_SendData(SPI_TypeDef* SPIx, uint16_t Data);
+uint16_t SPI_I2S_ReceiveData(SPI_TypeDef* SPIx);
+FlagStatus SPI_I2S_GetFlagStatus(SPI_TypeDef* SPIx, uint16_t SPI_I2S_FLAG);
+void SPI_StructInit(SPI_InitTypeDef* SPI_InitStruct);
+void SPI_SSEL_LOW(SPI_TypeDef *SPI);
+void SPI_SSEL_HIGH(SPI_TypeDef *SPI);
+u8 SPI1_TransReceive(u8 senddata);
+u8 SPI2_TransReceive(u8 senddata);
 
 #endif /* end __SPI_H */
 /*****************************************************************************
